@@ -33,7 +33,11 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			if (_link != null)
 			{
+#if MODERN
+				_link.RemoveFromRunLoop(NSRunLoop.Current, NSRunLoopMode.Common);
+#else
 				_link.RemoveFromRunLoop(NSRunLoop.Current, NSRunLoop.NSRunLoopCommonModes);
+#endif
 				_link.Dispose();
 			}
 			_link = null;
@@ -42,7 +46,11 @@ namespace Xamarin.Forms.Platform.iOS
 		protected override void EnableTimer()
 		{
 			_link = CADisplayLink.Create(() => SendSignals());
+#if MODERN
+			_link.AddToRunLoop(NSRunLoop.Current, NSRunLoopMode.Common);
+#else
 			_link.AddToRunLoop(NSRunLoop.Current, NSRunLoop.NSRunLoopCommonModes);
+#endif
 		}
 
 		void StartThread()

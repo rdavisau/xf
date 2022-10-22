@@ -5,6 +5,10 @@ using CoreGraphics;
 using Xamarin.Forms.Shapes;
 using Shape = Xamarin.Forms.Shapes.Shape;
 
+#if MODERN
+using NMath = ObjCRuntime.NMath;
+#endif
+
 #if __MOBILE__
 using UIKit;
 

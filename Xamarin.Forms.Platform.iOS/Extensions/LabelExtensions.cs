@@ -114,14 +114,22 @@ namespace Xamarin.Forms.Platform.MacOS
 
 #if __MOBILE__
 #pragma warning disable CS0618 // Type or member is obsolete
+#if MODERN
+			layoutManager.GetCharacterRange(characterRange, out glyphRange);
+#else
 			layoutManager.CharacterRangeForGlyphRange(characterRange, ref glyphRange);
+#endif
 #pragma warning restore CS0618 // Type or member is obsolete
 #else
 #pragma warning disable CS0618 // Type or member is obsolete
 			layoutManager.CharacterRangeForGlyphRange(characterRange, out glyphRange);
 #pragma warning restore CS0618 // Type or member is obsolete
 #endif
+#if MODERN
+			return layoutManager.GetBoundingRect(glyphRange, textContainer);
+#else
 			return layoutManager.BoundingRectForGlyphRange(glyphRange, textContainer);
+#endif
 		}
 
 		static double FindDefaultLineHeight(this NativeLabel control, int start, int length)

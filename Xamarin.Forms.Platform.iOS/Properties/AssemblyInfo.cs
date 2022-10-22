@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
+using Xamarin.Forms.Shapes;
 
 // These renderers are now registered via the RenderWithAttribute in the iOS Forwarders project.
 #if ROOT_RENDERERS
@@ -14,7 +15,7 @@ using UIKit;
 [assembly: ExportRenderer(typeof(Button), typeof(ButtonRenderer))]
 [assembly: ExportRenderer(typeof(TableView), typeof(TableViewRenderer))]
 [assembly: ExportRenderer(typeof(Slider), typeof(SliderRenderer))]
-[assembly: ExportRenderer(typeof(WebView), typeof(WebViewRenderer))]
+[assembly: ExportRenderer(typeof(WebView), typeof(WkWebViewRenderer))]
 [assembly: ExportRenderer(typeof(SearchBar), typeof(SearchBarRenderer))]
 [assembly: ExportRenderer(typeof(Switch), typeof(SwitchRenderer))]
 [assembly: ExportRenderer(typeof(SwipeView), typeof(SwipeViewRenderer))]
@@ -62,6 +63,7 @@ using UIKit;
 [assembly: ExportImageSourceHandler(typeof(FontImageSource), typeof(FontImageSourceHandler))]
 [assembly: InternalsVisibleTo("iOSUnitTests")]
 [assembly: InternalsVisibleTo("Xamarin.Forms.Platform")]
+[assembly: InternalsVisibleTo("Xamarin.Forms.Platform.iOS.modern (Forwarders)")]
 [assembly: InternalsVisibleTo("Xamarin.Forms.Material")]
 [assembly: InternalsVisibleTo("Xamarin.Forms.Platform.iOS.UnitTests")]
 [assembly: Xamarin.Forms.Dependency(typeof(Deserializer))]
